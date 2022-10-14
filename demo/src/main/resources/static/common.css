@@ -1,0 +1,48 @@
+@charset "UTF-8";
+*{margin: 0px; padding: 0; text-align: center;}
+ul, li{list-style: none;}
+a{text-decoration: none; color: inherit;}
+.container{width: 100vw; height: 100%; background-color: antiquewhite; position: absolute;}
+hr{background: #626262; margin: 10px 0 ;  color: inherit; opacity: .25;}
+/* header 영역 */
+header{width: 100vw; height: 5%; background-color: rgb(237, 177, 98);  line-height: 40px; overflow: hidden;}
+header>img{width: 100vw;}
+
+
+
+/* section 영역 */
+section{width: 100vw; height: 90%;}
+
+/* box 영역 */
+.box_container{display: flex; overflow: hidden; width: 100%; height: 100%;background-color: rgb(231, 154, 154)}
+#box1{width: 270px; height: 100%; background-color: #212529; padding: 10px;}
+#box2{width: 55%; height: 100%;background-color: #393939; display: flex;
+    flex-wrap: wrap; justify-content:center; align-items: center;}
+#box3{width: 45%; height: 100%; background-color: #393939; display: flex;
+    flex-wrap: wrap; justify-content:center; align-items: center;}
+
+/* box1 menu side bar 영역*/
+#servermonitoring_img>img{width: 72%;}
+
+/* side menu bar 영역 */
+.menu_bar_box{width: 100%}
+.menu_bar_box>ul>li{width: 92%; height: 40px; padding: 1% 4%; margin-bottom: 6px; cursor:pointer;
+ border-radius:6px;  background: #33373b; color: white; line-height: 40px; display: flex;
+ font-size: 12px; align-items: center;}
+.menu_bar_box>ul>li>img{width: 25px; margin: 5px; filter: invert(99%) sepia(99%) saturate(2%) hue-rotate(9deg) brightness(111%) contrast(100%);}
+
+.menu_bar_box>ul>li:hover{
+	background: #0d6efd; 
+}
+/* chart_box 영역 */
+#chart_box1{width: 80%; height:40%; background: #464646;}
+#chart_box2{width: 80%; height:40%; background: #464646;}
+
+/* pie_chart 영역 */ 
+.pie{background: #464646; }
+#pie_chart1{width: 90%; height: 30%; background: #464646;}
+#pie_chart2{width: 90%; height: 30%; background: #464646;}
+#pie_chart3{width: 90%; height: 30%; background: #464646;}
+/* footer 영역 */
+footer{width: 100vw; height: 5%; background-color: rgb(154, 90, 7); line-height: 40px; overflow: hidden;}
+footer>img{width: 100vw;}
