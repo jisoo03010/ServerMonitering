@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.springboot.jdbc.IMyUserDAO">
+
+
+	<select id="listDAO"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select *
+		from mydb.MonitoringDB
+		startdate
+		order by id desc
+		limit 60;
+	</select>
+	
+	<insert id="writeDao" parameterType="com.example.springboot.jdbc.MyUserDTO"> 
+        INSERT INTO mydb.MonitoringDB (cpuusage, memoryfreespace, memorytotalspace, cpucore, cpuprocessors)
+         VALUES (#{cpuusage}, #{memoryfreespace}, #{memorytotalspace},#{cpucore},#{cpuprocessors})
+    </insert>
+</mapper> 
