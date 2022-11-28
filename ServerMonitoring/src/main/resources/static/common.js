@@ -20,15 +20,15 @@ let save = document.getElementById("save")
 
 addBox.addEventListener("click", function() {
 	popup.style.display = "block"
-
+	as()
 })
 
 function as() {
-	inputText1.value = " "
-	inputText2.value = " "
-	inputText3.value = " "
-	inputText4.value = " "
-	inputText5.value = " "
+	inputText1.value = ""
+	inputText2.value = ""
+	inputText3.value = ""
+	inputText4.value = ""
+	inputText5.value = ""
 }
 
 close_icon.addEventListener("click", function() {
@@ -43,10 +43,10 @@ deleteBTN.addEventListener("click", function() {
 LocalMyPC.addEventListener("click", function() {
 	popup.style.display = "none"
 })
-let updateDatIcon = document.getElementById("updateDatIcon")
+/**let updateDatIcon = document.getElementById("updateDatIcon")
 updateDatIcon.addEventListener("click", function() {
 	alert("updateDatIcon 클릭함 !")
-})
+}) */
 //server 정보 가져오는 ajax 영역
 $.ajax({
 	type: 'GET',
@@ -94,6 +94,7 @@ $.ajax({
 			creatediv_click.addEventListener("click", function() {
 				alert(Textdivtag.innerText)
 			})
+			console.log(i)
 			let creatediv2_click = document.getElementById("creatediv2" + i)
 			creatediv2_click.addEventListener("click", function() {
 
@@ -107,22 +108,16 @@ $.ajax({
 					dataType: "json",
 					data: myData,
 					success: function(data) {
-						for (let i = 0; i < data.length; i++) {
-							let serverName = data[i].serverName
-							let ServerIP = data[i].ServerIP
-							let ServerPort = data[i].ServerPort
-							let ServerIN = data[i].ServerIN
-							let ServerPw = data[i].ServerPw
-							console.log(serverName);
-							console.log(ServerPort);
-							console.log(ServerIN);
-							console.log(ServerPw);
-							inputText1.value = serverName
-							inputText2.value = ServerIP
-							inputText3.value = ServerPort
-							inputText4.value = ServerIN
-							inputText5.value = ServerPw
-						}
+						let serverName = data[0]['serverName']
+						let ServerIP = data[0]['serverIP']
+						let ServerPort = data[0]['serverPort']
+						let ServerIN = data[0]['serverIN']
+						let ServerPw = data[0]['serverPw']
+						inputText1.value = serverName
+						inputText2.value = ServerIP
+						inputText3.value = ServerPort
+						inputText4.value = ServerIN
+						inputText5.value = ServerPw
 
 					},
 					error: function(e) {
@@ -142,6 +137,7 @@ $.ajax({
 
 
 		let j = 1;
+		let k = 1;
 		save.addEventListener("click", function() {
 			let form = document.form1
 			if (!form['ServerIN'].value) {
@@ -173,9 +169,9 @@ $.ajax({
 			createLi.id = "newMenuList" + j
 
 			const creatediv = document.createElement('div');
-			creatediv.id = "creatediv" + j
+			creatediv.id = "newcreatediv" + j
 			const creatediv2 = document.createElement('div');
-			creatediv2.id = "creatediv2" + j
+			creatediv2.id = "newcreatediv2" + j
 			const imgTag = document.createElement('img'); // img엘리먼트 생성
 			imgTag.setAttribute('src', './computer_icon.png'); // 속성 설정 방법 #1
 			imgTag.id = "cpu_img"
@@ -200,25 +196,57 @@ $.ajax({
 
 			// 증가 값 =======
 
-			let creatediv_click = document.getElementById("creatediv" + j)
+			j++
+			let creatediv_click = document.getElementById("newcreatediv" + k)
 			creatediv_click.addEventListener("click", function() {
 				alert(Textdivtag.innerText)
-				popup.style.display = "none"
 
 			})
 
 			//dat 이벤트 영역
-			let creatediv2_click = document.getElementById("creatediv2" + j)
+			let creatediv2_click = document.getElementById("newcreatediv2" + k)
 			creatediv2_click.addEventListener("click", function() {
 				alert("다트 클릭함")
 				popup.style.display = "block"
 				//////////////
+				var myData = {
+					ServerName: Textdivtag.innerText
+				}
+				$.ajax({
+					url: "SelectForm",
+					type: "post",
+					dataType: "json",
+					data: myData,
+					success: function(data) {
+						let serverName = data[0]['serverName']
+						let ServerIP = data[0]['serverIP']
+						let ServerPort = data[0]['serverPort']
+						let ServerIN = data[0]['serverIN']
+						let ServerPw = data[0]['serverPw']
+						console.log(serverName);
+						console.log(ServerIP);
+						console.log(ServerPort);
+						console.log(ServerIN);
+						console.log(ServerPw);
+						inputText1.value = serverName
+						inputText2.value = ServerIP
+						inputText3.value = ServerPort
+						inputText4.value = ServerIN
+						inputText5.value = ServerPw
 
+					},
+					error: function(e) {
+						alert("AJAX Filed!")
+						console.log(e)
+					}
+				})
+
+			k++
 			})
 
+			popup.style.display = "none"
 		})
 
-			j++
 
 
 
