@@ -1,0 +1,159 @@
+@charset "UTF-8";
+*{margin: 0px; padding: 0; text-align: center;}
+html{font-size : 16px;}
+ul, li{list-style: none;}
+
+a{text-decoration: none; color: inherit;}
+.container{width: 100vw; height: 100%; position: absolute;}
+hr{background: #626262; margin: 10px 0 ;  color: inherit; opacity: .25;}
+/* header 영역 */
+header{width: 100%;height: 8%; background: white; 
+  line-height: 80px; overflow: hidden;}
+header>img{width: 100vw;}
+
+
+/* section 영역 */
+section{width: 100vw; height: 92%;}
+
+/* box 영역 */
+.box_container{display: flex; overflow: hidden; width: 100%; height: 100%;}
+#bigbox{position: relative; width: 88%; height: 100%; display: flex;background: #f0f0f0; }
+#box1{width: 12%; height: 100%; background-color: #f5f5f5; position: relative;}
+#box2{width: 80%; height: 96%;background-color:#f0f0f0; display: flex;    margin: 1%;    flex-wrap: wrap; justify-content:center; align-items: center;}
+#box3{width: 49%; height: 100%; background-color: #f0f0f0;      display:flex; justify-content: space-between;
+     align-items: center;}
+
+/* box1 menu side bar 영역*/
+#servermonitoring_img{ width: 12%; height: 100%;position: relative; line-height:20px; background: linear-gradient( to right, #df4681, #a14fb1 );}
+#servermonitoring_img>img{width: 35%; height: 65%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+
+#menu_cpuImage{width: 100%; position: absolute; bottom: 2px; right: 2px;}
+
+
+/* side menu bar 영역 */
+#menu_bar_box{width: 100%; overflow: hidden; margin-top: 6%; }
+#menu_bar_box>li{display:flex; background: white;     justify-content: space-between;}
+#menu_bar_box>li>div:nth-child(1){ width: 100%; height: 7%; cursor:pointer; color: #e34381;  line-height: 48px; display: flex;  align-items: center;}
+#cpu_img { width: 15%;margin: 3%;filter: invert(39%) sepia(94%) saturate(2954%) hue-rotate(314deg) brightness(95%) contrast(86%);}
+#ram_img { width: 15%;margin: 3%;filter: invert(39%) sepia(94%) saturate(2954%) hue-rotate(314deg) brightness(95%) contrast(86%);}
+
+#updateDatIcon{ cursor: pointer;   filter: invert(50%) sepia(68%) saturate(4674%) hue-rotate(312deg) brightness(92%) contrast(93%);
+    border-radius: 100px; position: relative; width: 80%;  top: 50%; left: 50%; transform: translate(-50%, -50%);transition: all 0.5s}
+#updateDatIcon:hover{ 
+background:gray; opacity : 0.1;
+}
+#menu_bar_box>li:hover{
+	 color: #e34381;  font-weight: bold;  border-left : 5px solid #e34381;
+}
+#addBox:hover{font-weight: bold;}
+
+/* 수정, 설정 닷트 버튼 영역  */
+
+
+
+/* chart_box 영역 */
+
+#chart_box1{width: 100%; height: 42%;display: flex;  border-radius: 13px; justify-content: space-between; }
+#chart_box2{width:100%; display: flex;  height: 10%; border-radius: 13px; justify-content: space-between;}
+
+
+/* CPUChartBox 영역*/
+#CPUChartBox{width:50%; height: 100%;border-radius: 13px; }
+
+/* MemoryChartBox 영역*/
+#MemoryChartBox{width:49%; height: 100%; border-radius: 13px; }
+
+
+/* fiexd_data 영역*/
+.fiexd_data{border-radius: 13px; color: white;    position: relative;  }
+
+/* inputTextFiexd 영역*/
+.inputTextFiexd{ text-align: center;  font-size: 30px;}
+
+
+/* fixed_data(n) 영역 */
+#fixed_data1{width: 24%; height: 100%; background: #df4681;}
+#fixed_data2{width: 24%; height: 100%; background: #825cb2;}
+#fixed_data3{width: 24%; height: 100%; background:  #45bbec;}
+#fixed_data4{width: 24%; height: 100%; background:  #f5b029;}
+
+
+/* chart icon img*/
+.chart_iconImage{ position: absolute; right: 79%; top: 23%; opacity: 0.8; opacity: 0.8; filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(251deg) brightness(105%) contrast(100%);}
+
+.inputTextFiexd1{    padding-top: 3%;    font-size: 0.8vw;    position: relative;    top: 0;    right: -23%;}
+.inputTextFiexd{     font-size: 1.8vw;    position: relative;    right: 7%;}
+/* pie_chart 영역 */ 
+.pie{ border-radius: 12px;}
+
+
+#pie_chart2{background: white; height: 93%; border-radius: 13px;   width: 100%; padding: 1% 0px;}
+    
+#smallpie1{  height: 100%; width: 49%; border-radius: 13px; }
+#smallpie2{  height: 100%; width: 49%; border-radius: 13px; }
+    
+/*   소개 글 영역*/
+#introduce_box{   background: linear-gradient(#f0acc8, 40%, #9483cd ); ; width: 50%;    position: relative;    border-radius: 13px;    height: 100%;}
+#dashbordIcon{ width: 52%; left: 29%; position: absolute; top: 9%;}    
+#checksm{color: #fff; font-size: 1.7em;  position: relative; top: 79%;}
+    
+    
+/* footer 영역 */
+footer{width: 100vw; height: 5%; background-color: rgb(154, 90, 7); line-height: 40px; overflow: hidden;}
+footer>img{width: 100vw;}
+
+/* 팝업 영역 */
+#popup{margin : 0 auto; width:100%; padding : 5%; height: 100%; background-color: #f5f5f5;  width: 100%; height: 100%; position: absolute; z-index: 99; 
+display: none;}
+
+#popBox{margin : 0 auto; width:40%; height: 70%;} 
+
+
+form{display:flex; height: 100%; justify-content: space-around;}
+#pop_introduction{width:100%; height: 20%; background-color : white; }
+#formContainer{width:100%; height: 80%; background-color : white; justify-content: space-around; 
+    position: relative; }
+.inputText{height: 32px; width: 100%;}
+
+#inputButton{display: flex; position: absolute; width: 22%;
+    height: 10%;
+    right: 9px;
+    bottom: 0; }
+    
+.buttonInput{ height: 30px; width: 100%; color: white; border: none; border-radius: 5px; cursor: pointer;}
+
+#save{color: #519d71; background : #d4eddb; } 
+#save:hover {background: #d4eddb ;font-weight: bold; }
+
+
+
+#delete {color: #e67571; background : #f5dad9;   margin-right: 7px; }
+#delete:hover {font-weight: bold; background : #f5dad9; }
+.lie{width: 40%; text-align : left; font-size : 0.7rem; color: gray;}
+/* close_icon 스타일 */
+#close_icon{position: fixed; top: 10%; right: 1%; cursor: pointer; filter: invert(19%) sepia(73%) saturate(7194%) hue-rotate(357deg) brightness(100%) contrast(118%);}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
