@@ -8,7 +8,7 @@ import java.sql.Time;
 import lombok.Data;
 
 @Data
-public class MyUserDTO {
+public class  MyUserDTO {
 
 	private String cpuusage;
 

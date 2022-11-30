@@ -68,6 +68,9 @@ $(document).ready(function() {
 		xAxis: {
 			tickPositions: []
 		},
+		 tooltip: {
+			headerFormat: '<b>memory 사용량</b><br />'
+		},
 		series: [{
 			data: [0],
 			lineColor: '#87fee2', 
@@ -145,6 +148,9 @@ $(document).ready(function() {
 
 		credits: {
 			enabled: false
+		},
+		 tooltip: {
+			headerFormat: '<b>memory 사용량</b><br />'
 		},
 		series: [{
 			data: [20],

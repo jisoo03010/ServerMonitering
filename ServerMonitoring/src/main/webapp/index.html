@@ -45,9 +45,6 @@
 									Local PC
 								</div>
 							</div>
-							<div>
-								<img alt="updateDatIcon" src="./updateDatIcon.svg" id="updateDatIcon">
-							</div>
 						</li>
 						<li id="addBox">
 							<div>
@@ -80,9 +77,10 @@
 										</div>
 										<br>
 										서버 이름
-										<div>
+										<div id="serverNameDup">
 											<input id="inputText2" type="text" maxlength="10" name="ServerName"
 												class="inputText">
+											<input value="중복 확인" type="button" id="checkBtn" >
 										</div>
 										<br>
 										비밀번호
@@ -195,23 +193,38 @@
 	<script>
 		$('#myForm').submit(function (e) { //제이쿼리 선택 $('').submit() submit 이벤트
 			e.preventDefault();  //기본 서버 전송 기능 없애기
-			var myData = {
+
+			var insertData = {
 				ServerName: $('input[name="ServerName"]').val()
 				, ServerIP: $('input[name="ServerIP"]').val()
 				, ServerPort: $('input[name="ServerPort"]').val()
 				, ServerIN: $('input[name="ServerIN"]').val()
 				, ServerPw: $('input[name="ServerPw"]').val()
 			}
-			var url = 'auth';
+			var updateData = {
+				ServerName: $('input[name="ServerName"]').val()
+				, ServerIP: $('input[name="ServerIP"]').val()
+				, ServerPort: $('input[name="ServerPort"]').val()
+				, ServerIN: $('input[name="ServerIN"]').val()
+				, ServerPw: $('input[name="ServerPw"]').val()
+				, serverName2: $('input[name="ServerName"]').val()
+			}
+			let inputTextvalue = $('#save').val()
+			//만약에 클릭한 input값의 텍스트가 등록이면?
+			//	url을 auth로 하고  and mydata를 넣고 
+			//else if 등록이 아닌 수정이라면? 
+			// url의 값을 UpdateForm으로 설정하	고 , mydata가 아닌 updateMydata로 설정해서 파라미터에 넣을 것 !
+
 			$.ajax({
-				url: url,
+				url: (inputTextvalue == "등록" ? '/auth' : '/UpdateForm'),
 				type: "post",
 				dataType: "json",
-				data: myData,
-				//contentType: 'application/x-www-form-urlencoded; charset=utf-8;',
+				data: (inputTextvalue == "등록" ? insertData : updateData),
 				success: function (data) {
-					console.log("data");
-					console.log(data);
+					console.log(updateData)
+					console.log(this.data);
+					// insert 할때 : ServerName=asdf&ServerIP=asdf&ServerPort=asdf&ServerIN=asdf&ServerPw=asdf
+					// update 할때 : ServerName=asdf&ServerIP=asdf&ServerPort=asdf&ServerIN=kimjisoo&ServerPw=asdf&ServerName2=asdf
 				}
 			})
 		})
