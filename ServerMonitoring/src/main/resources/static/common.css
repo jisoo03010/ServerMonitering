@@ -125,10 +125,12 @@ form{display:flex; height: 100%; justify-content: space-around;}
 #serverNameDup{display: flex;}
 
 
-#delete {color: #e67571; background : #f5dad9;   margin-right: 7px; }
-#delete:hover {font-weight: bold; background : #f5dad9; }
+#Cancell {color: #e67571; background : #f5dad9;   margin-right: 7px; }
+#Cancell:hover {font-weight: bold; background : #f5dad9; }
 
 
+#deleteBtn {color: #e67571; background : #f5dad9;   margin-right: 7px; }
+#deleteBtn:hover {font-weight: bold; background : #f5dad9; }
 #checkBtn{color: #d6a64e; background : #fff8b9;cursor: pointer;  border-radius: 5px;   margin-left: 3px; border : none;}
 
 

@@ -71,16 +71,18 @@
 							<div id="formContainer">
 								<form id="myForm" name="form1">
 									<div id="lie1" class="lie">
-										서버 계정
-										<div>
-											<input id="inputText1" type="text" name="ServerIN" class="inputText">
-										</div>
-										<br>
+										
 										서버 이름
 										<div id="serverNameDup">
 											<input id="inputText2" type="text" maxlength="10" name="ServerName"
 												class="inputText">
-											<input value="중복 확인" type="button" id="checkBtn" >
+											<input value="중복 확인" type="button" id="checkBtn">
+										</div>
+										<br>
+										
+										서버 계정
+										<div>
+											<input id="inputText1" type="text" name="ServerIN" class="inputText">
 										</div>
 										<br>
 										비밀번호
@@ -109,7 +111,7 @@
 									</div>
 
 									<div id="inputButton">
-										<input type="button" value="취소" id="delete" class="buttonInput">
+										<input type="button" value="취소" id="Cancell" class="buttonInput">
 										<input type="submit" value="저장" id="save" class="buttonInput">
 
 									</div>
@@ -194,14 +196,14 @@
 		$('#myForm').submit(function (e) { //제이쿼리 선택 $('').submit() submit 이벤트
 			e.preventDefault();  //기본 서버 전송 기능 없애기
 
-			var insertData = {
+			let insertData = {
 				ServerName: $('input[name="ServerName"]').val()
 				, ServerIP: $('input[name="ServerIP"]').val()
 				, ServerPort: $('input[name="ServerPort"]').val()
 				, ServerIN: $('input[name="ServerIN"]').val()
 				, ServerPw: $('input[name="ServerPw"]').val()
 			}
-			var updateData = {
+			let updateData = {
 				ServerName: $('input[name="ServerName"]').val()
 				, ServerIP: $('input[name="ServerIP"]').val()
 				, ServerPort: $('input[name="ServerPort"]').val()
@@ -209,22 +211,33 @@
 				, ServerPw: $('input[name="ServerPw"]').val()
 				, serverName2: $('input[name="ServerName"]').val()
 			}
+			let deleteData = {
+				ServerName: $('input[name="ServerName"]').val()
+			}
 			let inputTextvalue = $('#save').val()
-			//만약에 클릭한 input값의 텍스트가 등록이면?
-			//	url을 auth로 하고  and mydata를 넣고 
-			//else if 등록이 아닌 수정이라면? 
-			// url의 값을 UpdateForm으로 설정하	고 , mydata가 아닌 updateMydata로 설정해서 파라미터에 넣을 것 !
+			let deleteTextvalue = $('#delete').val()
 
+			let url, data;
+			if (inputTextvalue == "등록") {
+				url = '/auth'
+				data = insertData
+			} else if (deleteTextvalue == "삭제") {
+				url = '/DeleteForm'
+				data = deleteData
+			}
+			else if (inputTextvalue == "수정") {
+				url = '/UpdateForm'
+				data = updateData
+			}
+						
 			$.ajax({
-				url: (inputTextvalue == "등록" ? '/auth' : '/UpdateForm'),
+				url: url,
 				type: "post",
 				dataType: "json",
-				data: (inputTextvalue == "등록" ? insertData : updateData),
+				data: data,
 				success: function (data) {
-					console.log(updateData)
+					console.log(url);
 					console.log(this.data);
-					// insert 할때 : ServerName=asdf&ServerIP=asdf&ServerPort=asdf&ServerIN=asdf&ServerPw=asdf
-					// update 할때 : ServerName=asdf&ServerIP=asdf&ServerPort=asdf&ServerIN=kimjisoo&ServerPw=asdf&ServerName2=asdf
 				}
 			})
 		})

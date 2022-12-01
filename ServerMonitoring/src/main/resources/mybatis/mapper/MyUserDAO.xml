@@ -58,13 +58,13 @@
 		select ServerName, ServerIP, ServerPort, ServerIN, ServerPw
 		from mydb.ServerDB;
 	</select>
-	
+
 	<select id="SelectServerName"
 		resultType="com.example.springboot.jdbc.MyUserDTO">
 		select ServerName
 		from mydb.ServerDB;
 	</select>
-	
+
 	<select id="SelectFormDataDAO"
 		resultType="com.example.springboot.jdbc.MyUserDTO">
 		select ServerName, ServerIP, ServerPort, ServerIN, ServerPw
@@ -72,14 +72,18 @@
 		where serverName =#{ServerName};
 	</select>
 
-	<update id="UpdateFormDAO"  parameterType="String">
+	<update id="UpdateFormDAO" parameterType="String">
 		update mydb.serverdb
 		set ServerName=#{serverName} ,
-		ServerIP=#{ServerIP}, ServerPort=#{ServerPort}, ServerIN=#{ServerIN},
+		ServerIP=#{ServerIP},
+		ServerPort=#{ServerPort}, ServerIN=#{ServerIN},
 		ServerPw=#{ServerPw}
 		where ServerName=#{serverName2} ;
 	</update>
 
-
+	<delete id="DeleteFormDAO"  parameterType="String">
+		DELETE FROM mydb.ServerDB
+		WHERE ServerName = #{ServerName};
+	</delete>
 </mapper> 
 

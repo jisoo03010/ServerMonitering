@@ -19,4 +19,5 @@ public interface IMyUserDAO {
 	public int UpdateFormDAO(@Param("serverName")String serverName,  @Param("ServerIP")String ServerIP, 
 			@Param("ServerPort")String ServerPort, @Param("ServerIN")String ServerIN, @Param("ServerPw")String ServerPw, @Param("serverName2")String serverName2 );
 	public List<MyUserDTO> SelectServerName();
+	public int DeleteFormDAO(@Param("ServerName")String serverName);
 }

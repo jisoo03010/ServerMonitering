@@ -1,7 +1,7 @@
 let addBox = document.getElementById("addBox")
 let popup = document.getElementById("popup")
 let close_icon = document.getElementById("close_icon")
-let deleteBTN = document.getElementById("delete")
+let Cancell = document.getElementById("Cancell")
 let inputText1 = document.getElementById("inputText1")
 let inputText2 = document.getElementById("inputText2")
 let inputText3 = document.getElementById("inputText3")
@@ -15,7 +15,7 @@ const myForm = document.querySelector("#myForm")// 폼
 const input = document.querySelector("#inputText2"); //서버 이름
 const ServerName = localStorage.getItem("ServerName");
 let save = document.getElementById("save")
-
+let inputButton = document.getElementById("inputButton")
 
 
 
@@ -45,9 +45,13 @@ close_icon.addEventListener("click", function() {
 	as()
 })
 
-deleteBTN.addEventListener("click", function() {
+Cancell.addEventListener("click", function() {
+
 	popup.style.display = "none"
 	as()
+
+
+
 })
 LocalMyPC.addEventListener("click", function() {
 	popup.style.display = "none"
@@ -92,6 +96,10 @@ $.ajax({
 
 			let btn = document.getElementById('MenuList' + i) //li를 의미함 
 
+
+
+
+
 			btn.appendChild(creatediv)
 			btn.appendChild(creatediv2)
 			creatediv.appendChild(imgTag)
@@ -114,6 +122,12 @@ $.ajax({
 				checkBtn.style.display = "none"
 				popup.style.display = "block"
 				save.value = "수정"
+				//delete 이벤트 영역
+
+
+
+
+
 				var myData = {
 					ServerName: Textdivtag.innerText
 				}
@@ -161,8 +175,6 @@ $.ajax({
 		// 버튼의 text가 등록이면 : insert 관련 코드가
 		// 버튼의 text가 수정이면 : update 관련 코드가 
 		save.addEventListener("click", function(event) {
-			console.log(checkBtn.style.background)
-
 
 			let str_space = /\s/;
 			let form = document.form1
@@ -258,7 +270,7 @@ $.ajax({
 				//닷트 사이드 메뉴 ... 아이콘을 클릭했을때 
 				let creatediv2_click = document.getElementById("newcreatediv2" + k)
 				creatediv2_click.addEventListener("click", function() {
-					alert("다트 클릭함")
+
 					popup.style.display = "block"
 
 					checkBtn.style.display = "none"
@@ -266,9 +278,6 @@ $.ajax({
 					save.style.background = "#fff8b9"
 					save.style.color = "#d6a64e"
 					save.value = "수정" // save input태그의 text를 수정으로 변경함
-					// Textdivtag : 왼쪽 사이드 메뉴에 해당하는 li태그 안에 text 즉, serverName을 말함
-
-					console.log(Textdivtag.innerText)
 					var myData = {
 						ServerName: Textdivtag.innerText
 					}

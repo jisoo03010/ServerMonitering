@@ -82,5 +82,15 @@ public class HomeController {
 		System.out.println("udpate : " + ": " + ServerIN + "," + ServerName + "," + ServerPw + "," + ServerIP + "," + ServerPort + "," + serverName2);
 		return Serversend;
 	}
+	
+
+	//삭제 
+	@ResponseBody
+	@RequestMapping(value = "/DeleteForm", method = {  RequestMethod.POST })
+	public int DeleteForm(String ServerName) {
+		int Serversend = userDAO.DeleteFormDAO(ServerName);
+		System.out.println("delete : " +  ServerName );
+		return Serversend;
+	}
 
 }
