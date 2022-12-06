@@ -48,7 +48,7 @@ public class HomeController {
 			String ServerPw) {
 		int ServerDBSend = userDAO.ArrayListInsertDAO(ServerName, ServerIP, ServerPort, ServerIN, ServerPw);
 		System.out.println(
-				"ajax 요청 도착! insert : " + ServerName + "," + ServerIP + "," + ServerPort + "," + ServerIN + "," + ServerPw);
+				"insert : " + ServerName + "," + ServerIP + "," + ServerPort + "," + ServerIN + "," + ServerPw);
 		return ServerDBSend;
 
 	}
@@ -71,7 +71,7 @@ public class HomeController {
 	@RequestMapping(value = "/SelectForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public List<MyUserDTO> SelectFormData(String ServerName) {
 		List<MyUserDTO> Serversend = userDAO.SelectFormDataDAO(ServerName);
-		System.out.println("ajax 요청 도착!" + "," + ServerName);
+		System.out.println("ajax 요청 도착!" + ":" + ServerName);
 		return Serversend;
 	}	
 
@@ -79,7 +79,7 @@ public class HomeController {
 	@RequestMapping(value = "/UpdateForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public int UpdateForm(String ServerName, String ServerIP, String ServerPort, String ServerIN, String ServerPw, String serverName2) {
 		int Serversend = userDAO.UpdateFormDAO(ServerName, ServerIP, ServerPort, ServerIN, ServerPw, serverName2);
-		System.out.println("udpate : " + ": " + ServerIN + "," + ServerName + "," + ServerPw + "," + ServerIP + "," + ServerPort + "," + serverName2);
+		System.out.println("udpate : " + ServerIN + "," + ServerName + "," + ServerPw + "," + ServerIP + "," + ServerPort + "," + serverName2);
 		return Serversend;
 	}
 	

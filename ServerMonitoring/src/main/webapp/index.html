@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>ServerMonitoring</title>
@@ -56,7 +55,6 @@
 						</li>
 					</ul>
 					<img alt="cpu_img" src="./undraw_profile_data_re_v81r.svg" id="menu_cpuImage">
-
 				</div>
 				<div id="bigbox">
 					<!-- 팝업 영역 -->
@@ -71,7 +69,6 @@
 							<div id="formContainer">
 								<form id="myForm" name="form1">
 									<div id="lie1" class="lie">
-										
 										서버 이름
 										<div id="serverNameDup">
 											<input id="inputText2" type="text" maxlength="10" name="ServerName"
@@ -79,7 +76,7 @@
 											<input value="중복 확인" type="button" id="checkBtn">
 										</div>
 										<br>
-										
+
 										서버 계정
 										<div>
 											<input id="inputText1" type="text" name="ServerIN" class="inputText">
@@ -90,7 +87,6 @@
 											<input id="inputText3" type="password" maxlength="4" name="ServerPw"
 												class="inputText">
 										</div>
-
 									</div>
 									<div id="lie2" class="lie">
 										<div style="text-align: left;">
@@ -104,10 +100,7 @@
 												<input id="inputText5" type="text" maxlength="4" name="ServerPort"
 													class="inputText">
 											</div>
-
 										</div>
-
-
 									</div>
 
 									<div id="inputButton">
@@ -117,12 +110,8 @@
 									</div>
 								</form>
 							</div>
-
-
 						</div>
 						<!-- 부트스트랩 폼 영역 -->
-
-
 					</div>
 					<div class="box" id="box2">
 						<!-- 소개 박스 영역 -->
@@ -180,10 +169,9 @@
 						</div>
 
 						<div id="sd">
+						
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 
@@ -194,58 +182,49 @@
 
 	<script>
 		$('#myForm').submit(function (e) { //제이쿼리 선택 $('').submit() submit 이벤트
-			e.preventDefault();  //기본 서버 전송 기능 없애기
-
+			e.preventDefault(); //기본 서버 전송 기능 없애기
 			let insertData = {
 				ServerName: $('input[name="ServerName"]').val()
 				, ServerIP: $('input[name="ServerIP"]').val()
 				, ServerPort: $('input[name="ServerPort"]').val()
 				, ServerIN: $('input[name="ServerIN"]').val()
 				, ServerPw: $('input[name="ServerPw"]').val()
-			}
+			};
 			let updateData = {
 				ServerName: $('input[name="ServerName"]').val()
 				, ServerIP: $('input[name="ServerIP"]').val()
 				, ServerPort: $('input[name="ServerPort"]').val()
 				, ServerIN: $('input[name="ServerIN"]').val()
 				, ServerPw: $('input[name="ServerPw"]').val()
-				, serverName2: $('input[name="ServerName"]').val()
-			}
-			let deleteData = {
-				ServerName: $('input[name="ServerName"]').val()
-			}
-			let inputTextvalue = $('#save').val()
-			let deleteTextvalue = $('#delete').val()
+				// 배열에 저장해둔 값으로 해야함, 즉 db에 저장되어 있는 선택한 서버 네임을 넣어야 한다.
+				, serverName2: localStorage.getItem('key')
+			};
+			let inputTextvalue = $('#save').val();
 
 			let url, data;
 			if (inputTextvalue == "등록") {
-				url = '/auth'
-				data = insertData
-			} else if (deleteTextvalue == "삭제") {
-				url = '/DeleteForm'
-				data = deleteData
+				url = '/auth';
+				data = insertData;
 			}
 			else if (inputTextvalue == "수정") {
-				url = '/UpdateForm'
-				data = updateData
+				url = '/UpdateForm';
+				data = updateData;
 			}
-						
+
 			$.ajax({
 				url: url,
 				type: "post",
 				dataType: "json",
 				data: data,
 				success: function (data) {
-					console.log(url);
-					console.log(this.data);
+					console.log(data)
 				}
-			})
-		})
+			});
+		});
 	</script>
 
 </body>
 <script src="../cpu_chart.js"></script>
 <script src="../memory_chart.js"></script>
 <script src="../common.js"></script>
-
 </html>

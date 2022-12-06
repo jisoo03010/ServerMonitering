@@ -129,7 +129,7 @@ form{display:flex; height: 100%; justify-content: space-around;}
 #Cancell:hover {font-weight: bold; background : #f5dad9; }
 
 
-#deleteBtn {color: #e67571; background : #f5dad9;   margin-right: 7px; }
+#deleteBtn {width: 100%; color: #e67571; background : #f5dad9;   margin-left: 7px;  border: none; border-radius: 5px; cursor: pointer;}
 #deleteBtn:hover {font-weight: bold; background : #f5dad9; }
 #checkBtn{color: #d6a64e; background : #fff8b9;cursor: pointer;  border-radius: 5px;   margin-left: 3px; border : none;}
 
