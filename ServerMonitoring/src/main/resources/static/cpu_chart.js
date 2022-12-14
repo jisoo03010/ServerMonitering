@@ -60,17 +60,22 @@ $(document).ready(function() {
 		},
 		yAxis: {
 			min: 0,
-			max: 100
+			max: 100,
+			title: {
+				text: 'Cpu Utilization'
+			}
 		}, credits: {
 			enabled: false
 		},
 		xAxis: {
 			tickPositions: []
 		},
-		 tooltip: {
-			headerFormat: '<b>cpu 사용량</b><br />'
+		tooltip: {
+			headerFormat: ' '
 		},
 		series: [{
+			
+			name: 'cpu 사용량',
 			data: [0],
 			lineColor: '#87fee2',
 			color: {
@@ -141,15 +146,17 @@ $(document).ready(function() {
 			min: 0,
 			max: 100,
 			title: {
-				text: 'cpu 사용량'
+				text: 'cpu 사용률'
 			}
 		},
 
 		credits: {
 			enabled: false
 		},
-		 tooltip: {
-			headerFormat: '<b>cpu 사용량</b><br />'
+		tooltip: {
+			formatter: function() {
+				return 'cpu 사용량'
+			},
 		},
 		series: [{
 			data: [30],

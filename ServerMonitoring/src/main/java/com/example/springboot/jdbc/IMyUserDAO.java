@@ -21,3 +21,5 @@ public interface IMyUserDAO {
 	public List<MyUserDTO> SelectServerName();
 	public int DeleteFormDAO(@Param("ServerName")String serverName);
 }
+//닷트 아이콘 클릭 이벤트 영역
+//닷트 아이콘 클릭 이벤트 영역

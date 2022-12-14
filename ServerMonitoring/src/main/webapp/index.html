@@ -72,32 +72,32 @@
 										서버 이름
 										<div id="serverNameDup">
 											<input id="inputText2" type="text" maxlength="10" name="ServerName"
-												class="inputText">
+												class="inputText" placeholder="input Your ServerName">
 											<input value="중복 확인" type="button" id="checkBtn">
 										</div>
 										<br>
 
 										서버 계정
 										<div>
-											<input id="inputText1" type="text" name="ServerIN" class="inputText">
+											<input id="inputText1" type="text" name="ServerIN" class="inputText"  placeholder="input Your ServerAccount"> 
 										</div>
 										<br>
 										비밀번호
 										<div>
 											<input id="inputText3" type="password" maxlength="4" name="ServerPw"
-												class="inputText">
+												class="inputText" placeholder="input Your Password">
 										</div>
 									</div>
 									<div id="lie2" class="lie">
-										<div style="text-align: left;">
+										<div style="text-align: left;" class="ipportClass">
 											ip 주소
 											<div>
-												<input id="inputText4" type="text" name="ServerIP" class="inputText">
+												<input id="inputText4" type="text" name="ServerIP" class="inputText" placeholder="input Your IP Address">
 											</div>
 											<br>
 											port 번호
 											<div>
-												<input id="inputText5" type="text" maxlength="4" name="ServerPort"
+												<input id="inputText5" type="text" maxlength="4" name="ServerPort" placeholder="input Your PortNumber"
 													class="inputText">
 											</div>
 										</div>
@@ -134,12 +134,12 @@
 							<div id="fixed_data3" class="fiexd_data">
 								<img alt="line2GrapIcon" src="./line2GrapIcon.svg" id="line2GrapIcon"
 									class="chart_iconImage">
-								<p class="inputTextFiexd1">메모리 총용량</p>
+								<p class="inputTextFiexd1">메모리 사용률</p>
 								<p id="input_text3" class="inputTextFiexd"></p>
 							</div>
 							<div id="fixed_data4" class="fiexd_data">
 								<img alt="barGrapIcon" src="./barGrapIcon.svg" id="barGrapIcon" class="chart_iconImage">
-								<p class="inputTextFiexd1">메모리 사용량</p>
+								<p class="inputTextFiexd1">메모리 사용률</p>
 								<p id="input_text4" class="inputTextFiexd"></p>
 							</div>
 						</div>
@@ -151,8 +151,8 @@
 							</div>
 
 							<div class="box" id="box3">
-								<div id="smallpie1">memory 사용량</div>
-								<div id="smallpie2">cpu 사용량</div>
+								<div id="smallpie1">memory 사용률</div>
+								<div id="smallpie2">cpu 사용률</div>
 
 							</div>
 						</div>
@@ -180,48 +180,6 @@
 	</div>
 
 
-	<script>
-		$('#myForm').submit(function (e) { //제이쿼리 선택 $('').submit() submit 이벤트
-			e.preventDefault(); //기본 서버 전송 기능 없애기
-			let insertData = {
-				ServerName: $('input[name="ServerName"]').val()
-				, ServerIP: $('input[name="ServerIP"]').val()
-				, ServerPort: $('input[name="ServerPort"]').val()
-				, ServerIN: $('input[name="ServerIN"]').val()
-				, ServerPw: $('input[name="ServerPw"]').val()
-			};
-			let updateData = {
-				ServerName: $('input[name="ServerName"]').val()
-				, ServerIP: $('input[name="ServerIP"]').val()
-				, ServerPort: $('input[name="ServerPort"]').val()
-				, ServerIN: $('input[name="ServerIN"]').val()
-				, ServerPw: $('input[name="ServerPw"]').val()
-				// 배열에 저장해둔 값으로 해야함, 즉 db에 저장되어 있는 선택한 서버 네임을 넣어야 한다.
-				, serverName2: localStorage.getItem('key')
-			};
-			let inputTextvalue = $('#save').val();
-
-			let url, data;
-			if (inputTextvalue == "등록") {
-				url = '/auth';
-				data = insertData;
-			}
-			else if (inputTextvalue == "수정") {
-				url = '/UpdateForm';
-				data = updateData;
-			}
-
-			$.ajax({
-				url: url,
-				type: "post",
-				dataType: "json",
-				data: data,
-				success: function (data) {
-					console.log(data)
-				}
-			});
-		});
-	</script>
 
 </body>
 <script src="../cpu_chart.js"></script>

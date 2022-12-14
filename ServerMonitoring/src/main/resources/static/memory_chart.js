@@ -61,19 +61,24 @@ $(document).ready(function() {
 			}
 		}, yAxis: {
 			min: 0,
-			max: 40
-		},credits: {
-            enabled: false
-        },
+			max: 40,
+			title: {
+				text: 'Memory Utilization'
+			}
+		}, credits: {
+			enabled: false
+		},
 		xAxis: {
 			tickPositions: []
 		},
-		 tooltip: {
-			headerFormat: '<b>memory 사용량</b><br />'
+		tooltip: {
+			headerFormat: ''
 		},
 		series: [{
+
+			name: 'memory 사용량',
 			data: [0],
-			lineColor: '#87fee2', 
+			lineColor: '#87fee2',
 			color: {
 				linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
 				stops: [
@@ -142,15 +147,19 @@ $(document).ready(function() {
 			min: 0,
 			max: 32,
 			title: {
-				text: 'memory 사용량'
+				text: 'memory 사용률'
 			}
 		},
 
 		credits: {
 			enabled: false
 		},
-		 tooltip: {
-			headerFormat: '<b>memory 사용량</b><br />'
+		tooltip: {
+
+			formatter: function() {
+				return '<b>memory 사용량</b>'
+			},
+
 		},
 		series: [{
 			data: [20],
