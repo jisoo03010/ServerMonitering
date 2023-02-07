@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ServerMonitoring</title>
+</head>
+<link rel="stylesheet" type="text/css" href="./common.css">
+<link rel="icon" href="./datacentric_logo_browser.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script src="../highcharts.js"></script>
+<script src="../exporting.js"></script>
+<script src="../export-data.js"></script>
+<script src="../accessibility.js"></script>
+<script src="../solid-gauge.js"></script>
+<script src="../highcharts-more.js"></script>
+
+<script src="../data.js"></script>
+
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<div class="container">
+		<header>
+			<div id="servermonitoring_img">
+				<img alt="servermonitoring_img" src="./bottom_logo.png">
+			</div>
+		</header>
+		<section>
+			<div class="box_container">
+				<div class="box" id="box1">
+
+					<ul id="menu_bar_box">
+						<li id="LocalMyPC">
+							<div>
+								<img alt="cpu_img" src="./computer_icon.png" id="cpu_img">
+								<div>
+									Local PC
+								</div>
+							</div>
+						</li>
+						<li id="addBox">
+							<div>
+								<img alt="ram_img" src="./add_box.png" id="ram_img">
+								<div>
+									Add PC
+								</div>
+							</div>
+						</li>
+					</ul>
+					<img alt="cpu_img" src="./undraw_profile_data_re_v81r.svg" id="menu_cpuImage">
+				</div>
+				<div id="bigbox">
+					<!-- 팝업 영역 -->
+					<div id="popup">
+						<!-- close button icon 영역 -->
+						<img alt="close_icon" src="./close_icon.svg" id="close_icon">
+						<div id="popBox">
+							<div id="pop_introduction">
+								Your Profile Please
+								등록하려는 서버의 정보를 입력해주세요
+							</div>
+							<div id="formContainer">
+								<form id="myForm" name="form1">
+									<div id="lie1" class="lie">
+										서버 이름
+										<div id="serverNameDup">
+											<input id="inputText2" type="text" maxlength="10" name="ServerName"
+												class="inputText" placeholder="input Your ServerName">
+											<input value="중복 확인" type="button" id="checkBtn">
+										</div>
+										<br>
+
+										서버 계정
+										<div>
+											<input id="inputText1" type="text" name="ServerIN" class="inputText"  placeholder="input Your ServerAccount"> 
+										</div>
+										<br>
+										비밀번호
+										<div>
+											<input id="inputText3" type="password" maxlength="4" name="ServerPw"
+												class="inputText" placeholder="input Your Password">
+										</div>
+									</div>
+									<div id="lie2" class="lie">
+										<div style="text-align: left;" class="ipportClass">
+											ip 주소
+											<div>
+												<input id="inputText4" type="text" name="ServerIP" class="inputText" placeholder="input Your IP Address">
+											</div>
+											<br>
+											port 번호
+											<div>
+												<input id="inputText5" type="text" maxlength="4" name="ServerPort" placeholder="input Your PortNumber"
+													class="inputText">
+											</div>
+										</div>
+									</div>
+
+									<div id="inputButton">
+										<input type="button" value="취소" id="Cancell" class="buttonInput">
+										<input type="submit" value="저장" id="save" class="buttonInput">
+
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- 부트스트랩 폼 영역 -->
+					</div>
+					<div class="box" id="box2">
+						<!-- 소개 박스 영역 -->
+
+						<div id="chart_box2">
+							<!-- 메모리 -->
+							<div id="fixed_data1" class="fiexd_data">
+								<img alt="columnChartIcon" src="./columnChartIcon.svg" id="columnChartIcon"
+									class="chart_iconImage">
+								<p class="inputTextFiexd1">cpu 코어 개수</p>
+
+								<p id="input_text1" class="inputTextFiexd"></p>
+							</div>
+							<div id="fixed_data2" class="fiexd_data">
+								<img alt="liveGrapIcon" src="./liveGrapIcon.svg" id="liveGrapIcon"
+									class="chart_iconImage">
+								<p class="inputTextFiexd1">cpu 사용률</p>
+								<p id="input_text2" class="inputTextFiexd"></p>
+							</div>
+							<div id="fixed_data3" class="fiexd_data">
+								<img alt="line2GrapIcon" src="./line2GrapIcon.svg" id="line2GrapIcon"
+									class="chart_iconImage">
+								<p class="inputTextFiexd1">메모리 사용률</p>
+								<p id="input_text3" class="inputTextFiexd"></p>
+							</div>
+							<div id="fixed_data4" class="fiexd_data">
+								<img alt="barGrapIcon" src="./barGrapIcon.svg" id="barGrapIcon" class="chart_iconImage">
+								<p class="inputTextFiexd1">메모리 사용률</p>
+								<p id="input_text4" class="inputTextFiexd"></p>
+							</div>
+						</div>
+
+						<div id="chart_box1">
+							<div id="CPUChartBox">
+
+
+							</div>
+
+							<div class="box" id="box3">
+								<div id="smallpie1">memory 사용률</div>
+								<div id="smallpie2">cpu 사용률</div>
+
+							</div>
+						</div>
+
+						<div id="chart_box1">
+							<div id="introduce_box">
+								<img alt="dashbordIcon" src="./dashbordIcon.svg" id="dashbordIcon">
+								<p id="checksm">Check your server monitoring system</p>
+							</div>
+							<div id="MemoryChartBox">
+
+
+							</div>
+						</div>
+
+						<div id="sd">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+	</div>
+
+
+
+</body>
+<script src="../cpu_chart.js"></script>
+<script src="../memory_chart.js"></script>
+<script src="../common.js"></script>
+</html>
