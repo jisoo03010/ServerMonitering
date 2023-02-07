@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.springboot.jdbc.IMyUserDAO">
+	<!-- right menu click parameter값 받아서 cpu 메모리 데이터 전달 -->
+	<select id="ServerNameOtherSelect"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select *
+		from mydb.MonitoringDB  
+		where ServerName = #{ServerName}
+		order by id desc
+		limit 1;
+	</select>
+
+
+	<!-- cpu select하는 영역 -->
+	<select id="CpuSend"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select CpuUsage, CpuCore, CpuProcessors
+		from mydb.MonitoringDB  
+		where ServerName = #{ServerName}
+		order by id desc
+		limit 1;
+	</select>
+
+	<!-- 메모리 select하는 영역 -->
+	<select id="MemorySend"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select round(MemoryFreespace, 1) MemoryFreespace,
+		round(MemoryTotalSpace, 1) MemoryTotalSpace
+		from mydb.MonitoringDB
+		where ServerName = #{ServerName}
+		order by id desc
+		limit 1;
+	</select>
+
+	<!-- cpu와 memory 정르를 저장하는 sql -->
+	<insert id="writeDao"
+			parameterType="com.example.springboot.jdbc.MyUserDTO">
+		INSERT INTO mydb.MonitoringDB (CpuUsage,
+		MemoryFreespace, MemoryTotalSpace,
+		CpuCore, CpuProcessors, ServerName)
+		VALUES
+		(#{CpuUsage}, #{MemoryFreespace},
+		#{MemoryTotalSpace},#{CpuCore},#{CpuProcessors},#{ServerName})
+	</insert>
+
+	<!-- 제일 시간이 오래지난 순번으로 부터 60개를 삭제하는 sql -->
+	<delete id="deleted"
+		parameterType="com.example.springboot.jdbc.MyUserDTO">
+		delete
+		from mydb.MonitoringDB
+		order by id asc
+		limit 60;
+	</delete>
+
+	<!-- 서버 정보등록에 대한 sql -->
+	<insert id="Auth"
+		parameterType="com.example.springboot.jdbc.MyUserDTO">
+		INSERT INTO mydb.ServerDB (ServerName, ServerIP,
+		ServerPort, ServerIN, ServerPw)
+		VALUES (#{ServerName}, #{ServerIP},
+		#{ServerPort},#{ServerIN},#{ServerPw});
+	</insert>
+
+
+	<!-- 서버의 모든 정보를 가져오는 sql -->
+	<select id="ServerPeople"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select ServerName, ServerIP, ServerPort, ServerIN, ServerPw
+		from mydb.ServerDB;
+	</select>
+
+	<!-- 등록한 서버 정보중에서 서버 이름만을 가져오는 sql sql -->
+	<select id="SelectServerName"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select ServerName
+		from mydb.ServerDB;
+	</select>
+
+	<!-- 조건에 맞는 서버 정보를 가져오는 sql -->
+	<select id="SelectForm"
+		resultType="com.example.springboot.jdbc.MyUserDTO">
+		select ServerName, ServerIP, ServerPort, ServerIN, ServerPw
+		from mydb.ServerDB
+		where serverName =#{ServerName};
+	</select>
+
+	<update id="UpdateForm" parameterType="String">
+		update mydb.serverdb
+		set
+		ServerName=#{serverName} ,
+		ServerIP=#{ServerIP},
+		ServerPort=#{ServerPort}, ServerIN=#{ServerIN},
+		ServerPw=#{ServerPw}
+		where ServerName=#{serverName2} ;
+	</update>
+
+	<delete id="DeleteForm" parameterType="String">
+		DELETE FROM mydb.ServerDB
+		WHERE ServerName = #{ServerName};
+	</delete>
+<!-- 
+	<insert id="UserServerInfo"
+		parameterType="com.example.springboot.jdbc.MyUserDTO">
+		INSERT INTO mydb.MonitoringDB (CpuUsage,
+		MemoryFreespace, MemoryTotalSpace,
+		CpuCore, CpuProcessors, ServerName)
+		VALUES
+		(#{CpuUsage}, #{MemoryFreespace},
+		#{MemoryTotalSpace},#{CpuCore},#{CpuProcessors},#{ServerName})
+	</insert>
+ -->
+</mapper> 
+
