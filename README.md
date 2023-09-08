@@ -1,9 +1,9 @@
 # 💻ServerMonitering 💻
 
-### 구 화면 
+### 1.0 ver 화면 
 ![image](https://user-images.githubusercontent.com/73218962/199677958-be724566-2a98-481e-b13a-b090e02f513c.png)
 --
-### 현 화면  
+### 2.0 ver 화면  
 ![image](https://user-images.githubusercontent.com/73218962/207484631-5d196e1f-57a7-4952-ad00-59d06ddb5e43.png)
 --
 # 구조 (JPA 사용)
